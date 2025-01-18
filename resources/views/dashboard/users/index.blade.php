@@ -33,22 +33,7 @@
 
                         <a href="{{ route('dashboard.users.edit', $user) }}" class="btn btn-sm btn-outline-primary" title="تعديل الحساب">
                             <i data-feather="edit"></i>
-                        </a>
-                        <form method="post" action="{{ route('dashboard.users.reset-password' , $user) }}" class="d-inline-block" 
-                            onsubmit="return confirm(' تصفير كلمة المرور لحساب {{ $user->name }}?' )">
-                            @csrf
-                            <button href="" class="btn btn-sm btn-outline-warning" title="تصفير كلمة المرور">
-                                <i data-feather="rotate-ccw"></i>                            
-                            </button>                      
-                        </form>
-                        <form method="post" action="{{ route('dashboard.users.lock' , $user) }}" class="d-inline-block" 
-                            onsubmit="return confirm(' قفل حساب {{ $user->name }}?' )">
-                            @csrf
-                            <button href="" class="btn btn-sm btn-outline-danger" title="قفل حساب">
-                                <i data-feather="lock"></i>                            
-                            </button>                      
-                        </form>
-
+                        </a>                                                
                     </td>
                 </tr>
             @endforeach

@@ -16,7 +16,7 @@ window.addEventListener("scroll", toggleBacktotop);
 const navbar = document.querySelector(".navbar");
 const makeNavSticky = () => {
     if (window.scrollY > 10) navbar.classList.add("sticky");
-    else navbar.classList.remove("sticky");
+    else if (window.scrollY < 10) navbar.classList.remove("sticky");
 };
 window.addEventListener("scroll", makeNavSticky);
 
@@ -159,11 +159,10 @@ let navs = document.querySelectorAll(
 navs.forEach((currNav) => {
     currNav.addEventListener("click", () => {
         navs.forEach((nav) => {
-            if (nav == currNav){
+            if (nav == currNav) {
                 nav.classList.toggle("active");
                 nav.nextElementSibling.classList.toggle("dropdown-hidden");
-            }
-            else nav.nextElementSibling.classList.add("dropdown-hidden");
+            } else nav.nextElementSibling.classList.add("dropdown-hidden");
         });
     });
 });
@@ -172,11 +171,10 @@ let subNavs = document.querySelectorAll(".dropdown .dropdown .dropdown-toggle");
 subNavs.forEach((currNav) => {
     currNav.addEventListener("click", function (event) {
         subNavs.forEach((nav) => {
-            if (nav == currNav){
+            if (nav == currNav) {
                 nav.classList.toggle("active");
                 nav.nextElementSibling.classList.toggle("dropdown-hidden");
-            }
-            else nav.nextElementSibling.classList.add("dropdown-hidden");
+            } else nav.nextElementSibling.classList.add("dropdown-hidden");
         });
     });
 });
@@ -188,9 +186,10 @@ document.documentElement.addEventListener("click", function (event) {
     // check if it has the menu element
     if (path.some((elem) => elem.id === "navbar-area")) {
         // terminate this function if it does
-        return;        
+        return;
     }
-    
-    document.querySelectorAll(".dropdown-menu").forEach((el) => el.classList.add("dropdown-hidden"));
 
+    document
+        .querySelectorAll(".dropdown-menu")
+        .forEach((el) => el.classList.add("dropdown-hidden"));
 });

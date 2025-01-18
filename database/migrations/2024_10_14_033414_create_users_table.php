@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->enum('type' , ['admin' , 'user']);
-            $table->enum('state' , ['normal','new','reset','banned'])->default('new');
+            $table->enum('state' , ['normal','banned'])->default('normal');
             $table->foreignId('province_id')->constrained();
             $table->rememberToken();
             $table->timestamps();

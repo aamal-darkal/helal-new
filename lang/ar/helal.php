@@ -6,6 +6,7 @@ return [
 
     /** css */
     'font' => 'Tajawal',
+    'lang-btn-font' => 'Montserrat',
     'dir' => 'rtl',
     'align' => 'right',
     'sign' => '-1',
@@ -51,19 +52,13 @@ return [
     // 'center' => ' Media Center',
     // 'media' => 'News and Media',
 
-    
-    /** ================================================ */
-    /** for dashboard (in arabic only) section types */
-    'section-types' => [
-        'article' => ['singular' => 'مقالة', 'plural' => 'مقالات'],
-        'campaign' => ['singular' => 'حملة', 'plural' => 'حملات'],
-        'news' => ['singular' => 'خبر', 'plural' => 'أخبار'],
-        'story' => ['singular' => 'قصة', 'plural' => 'قصص'],
-        'section' => ['singular' => 'فقرة', 'plural' => 'فقرات'],
-        'vacancy' => ['singular' => 'وظيفة', 'plural' => 'وظائف'],
-        'page' => ['singular' => 'صفحة', 'plural' => 'صفحات'],
-    ]
-
+    'article' =>  'مقالات|مقالة',
+    'campaign' =>  'حملات|حملة',
+    'news' =>  'أخبار|خبر',
+    'story' =>  'قصص|قصة',
+    'section' =>  'فقرات|فقرة',
+    'vacancy' =>  'وظائف|وظيفة',
+    'page' =>  'صفحات|صفحة',
 ];
 
     

@@ -3,7 +3,7 @@
 @section('content')
     <div class="view-wrapper p-3" style="direction:@if( $section->lang == 'en') ltr @else rtl @endif">
         <hr class="content-divider">
-        <div class="view-cover ">
+        <div class="view-cover">
             <img class="w-100" src="{{ asset(getImgUrl($section->image_id)) }}">
         </div>
         <h2>{{ $section->title }}</h2>

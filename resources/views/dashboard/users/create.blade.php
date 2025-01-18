@@ -8,14 +8,16 @@
 
         <x-input name="name" label="الاسم" required maxlength="50" />
         <x-input name="email" label="البريد الالكتروني" required maxlength="50" />
+        <x-input name="password" label="كلمة المرور" required maxlength="15" />
        
         <div>
             <label class="form-label">نوع المستحدم</label> <br>
-
-            <input class="form-check-input" name="type" type="radio" value="user" id="user" checked>
-            <label for="user"> user </label>
-            <input class="form-check-input me-4 mb-3" name="type" type="radio" value="admin" id="admin">
-            <label for="banned"> admin </label>            
+            <x-radio name="type" :items="['user' , 'admin']" dbValue="user"/>
+        </div>
+        
+        <div>
+            <label class="form-label">حالة المستحدم</label> <br>
+            <x-radio name="state" :items="['normal' , 'banned']" dbValue="normal" />
         </div>
 
         <x-select name="province_id" label="المحافظة"  :options=$provinces />

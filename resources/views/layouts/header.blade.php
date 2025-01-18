@@ -15,7 +15,7 @@
                 {{-- <i class="fa-solid fa-bars"></i> --}}
             </button>
             <form action="{{ route('language') }}" class="d-inline-block">
-                <button class="btn btn-salmon ms-2">@lang('helal.lang')</button>
+                <button class="btn btn-salmon ms-2 lang-btn">@lang('helal.lang')</button>
             </form>
         </div>
     </div>

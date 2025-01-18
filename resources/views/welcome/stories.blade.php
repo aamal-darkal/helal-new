@@ -14,6 +14,7 @@
                                     <div class="col-md-6 mb-5">
                                         <div class="story-content bg-white p-3 shadow">
                                             <h3 class="text-salmon">{{ $story->$detail->title }}</h3>
+                                            <p>{{ $story->date }}</p>
                                             <div class="d-none">
                                                 {!! $story->$detail->content !!}
                                             </div>

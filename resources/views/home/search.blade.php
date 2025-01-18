@@ -5,22 +5,20 @@
         <hr class="content-divider">
         <div class="filter-box">
             <h2 class="text-salmon"> {{ $key }}</h2>
-            @if ($type)
-                <select name="type" class="form-select" onchange="getUrl(this.value);">
-                    <option value="" hidden>-- @lang('helal.choose-type')</option>
-                    @foreach (config('app.section-type') as $option)
-                        <option value="{{ $option }}" @selected($option == $type)>
-                            {{ __("helal.section-types.$option.plural") }}</option>
-                    @endforeach
-                </select>
-            @endif
+            <select name="type" class="form-select" onchange="getUrl(this.value);">
+                <option value="" hidden>-- @lang('helal.choose-type')</option>
+                @foreach (config('app.section-type') as $option)
+                    <option value="{{ $option }}" @selected($option == $type)>
+                        {{ trans_choice("helal.$option", 2) }}</option>
+                @endforeach
+            </select>
         </div>
         @foreach ($results as $result)
             <div class="topic">
                 <div class="topic-desc p-2">
                     <div class="topic-title">
                         <h2>{{ $result->$detail->title }}</h2>
-                        <p> @lang("helal.section-types.$result->type.singular") - {{ $result->date }}</p>
+                        <p> @choice("helal.$result->type", 1) - {{ $result->date }}</p>
                     </div>
 
                     <div class="d-none"> {!! $result->$detail->content !!} </div>
@@ -31,7 +29,7 @@
                     </a>
                 </div>
                 <div class="img-wrapper">
-                    <div class="search-type">@lang("helal.section-types.$result->type.singular") </div>
+                    <div class="search-type">@choice("helal.$result->type", 1) </div>
                     <img src="{{ $result->image_id ? asset(getImgUrl($result->image_id)) : '' }}">
                 </div>
             </div>
@@ -48,7 +46,7 @@
     <div class="text-center"><a class="btn btn-salmon mt-3" href="{{ url()->previous() }}">@lang('helal.back')</a>
         <br>
         <br>
-        
 
 
-@endsection
+
+    @endsection

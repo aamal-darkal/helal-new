@@ -41,7 +41,10 @@
         }
          body {
             font-family: @lang('helal.font')
-        }              
+        }
+        .lang-btn {
+            font-family: @lang('helal.lang-btn-font')
+        }
     </style>
     <!--====== aos custom ======-->
     <link rel="stylesheet" href="{{ asset('assets/custom/custom.css') }}">

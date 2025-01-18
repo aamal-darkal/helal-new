@@ -9,7 +9,6 @@ use App\Models\Doing;
 use App\Models\Martyer;
 use App\Models\Province;
 use App\Models\Section;
-use App\Models\Xxxxx;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -42,19 +41,19 @@ class HomeController extends Controller
         $provinces = $this->getProvinces();
         
         /** 400 content length can be replace from settings */        
-        $news = Section::select('id', 'date', 'image_id', 'summary_length')
+        $news = Section::select('id', 'type', 'date', 'image_id', 'summary_length')
             ->with("sectionDetail_$locale", function ($q) {
-                return $q->select("section_id", "title","lang", DB::raw("substr(REGEXP_REPLACE(content, '<[^>]*>+', '') , 1 ,400) as content"));
+                return $q->select("section_id","lang", DB::raw("substr(REGEXP_REPLACE(content, '<[^>]*>+', '') , 1 ,400) as content"));
             })
             ->wherehas("sectionDetail_$locale")
-            ->where('type', 'news')->where('hidden', 0)->orderBy('date', 'desc')->limit(6)->get();
+            ->whereIn('type', ['article',  'campaign',   'news',  'story'])->where('hidden', 0)->orderBy('date', 'desc')->limit(6)->get();
 
         $stories = Section::select('id', 'date', 'image_id', 'summary_length')
             ->with("sectionDetail_$locale", function ($q) {
                 return $q->select("section_id", "title","lang", DB::raw("substr(REGEXP_REPLACE(content, '<[^>]*>+', '') , 1 ,400) as content"));
             })
             ->wherehas("sectionDetail_$locale")
-            ->where('type', 'story')->where('hidden', 0)->orderBy('date', 'desc')->limit(6)->get();
+            ->where('type', 'story')->where('hidden', 0)->orderBy('date', 'desc')->limit(8)->get();
 
 
         $campaign = Section::select('id', 'date', 'image_id', 'summary_length')
@@ -94,7 +93,6 @@ class HomeController extends Controller
 
         $locale = app()->getLocale();
 
-
         $doing =  $request->doing;
         $search = $request->search;
         $province = $request->province;
@@ -118,8 +116,9 @@ class HomeController extends Controller
             })
             /** for free search */
             ->when($search, function ($q) use ($search) {
-                return  $q->where('title_ar', 'like', "%$search%")
-                    ->orwhere('title_en', 'like', "%$search%");
+                return  $q->wherehas('sectionDetails', function($q) use ($search){
+                    return $q->where('title', 'like', "%$search%");
+                });
             })
             /** for certain doing */
             ->when(
@@ -141,8 +140,10 @@ class HomeController extends Controller
 
         $detail = "sectionDetail_$locale";
 
-        $key = $province ? __('helal.section-types.news.plural')  . " " . Province::find($province)->$name : ($type ?   __("helal.section-types.$type.plural") : ($search ? $search : ($doing ? Doing::find($doing)->$title :
-            __('helal.organization-news'))));
+        $key = $province ?  trans_choice('helal.news' , 2)  . " " . Province::find($province)->$name : 
+         ($type ?   trans_choice("helal.$type", 2) : 
+         ($search ? $search : 
+         ($doing ? Doing::find($doing)->$title :  __('helal.organization-news'))));
             
         // return $results;
         return view('home.search', compact('results', 'key', 'type', 'detail'));

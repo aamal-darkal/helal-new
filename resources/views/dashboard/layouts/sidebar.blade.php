@@ -9,27 +9,27 @@
              <li class="sidebar-item @if (session()->get('type') == 'news') active @endif ">
                  <a class="sidebar-link" href="{{ route('dashboard.sections.index', ['type' => 'news']) }}">
                      <i class="align-middle" data-feather="file-text"></i>
-                     <span class="align-middle"> @lang('helal.section-types.news.plural')</span>
+                     <span class="align-middle"> @choice('helal.news' ,2)</span>
                  </a>
              </li>
              <li class="sidebar-item @if (session()->get('type') == 'story') active @endif">
                  <a class="sidebar-link" href="{{ route('dashboard.sections.index', ['type' => 'story']) }}">
                      <i class="align-middle" data-feather="heart"></i>
-                     <span class="align-middle"> @lang('helal.section-types.story.plural')</span>
+                     <span class="align-middle"> @choice('helal.story' ,2)</span>
                  </a>
              </li>
 
              <li class="sidebar-item @if (session()->get('type') == 'article') active @endif">
                  <a class="sidebar-link" href="{{ route('dashboard.sections.index', ['type' => 'article']) }}">
                      <i class="align-middle" data-feather="book-open"></i>
-                     <span class="align-middle">@lang('helal.section-types.article.plural') </span>
+                     <span class="align-middle">@choice('helal.article' , 2) </span>
                  </a>
              </li>
              
              <li class="sidebar-item @if (session()->get('type') == 'vacancy') active @endif">
                  <a class="sidebar-link" href="{{ route('dashboard.sections.index', ['type' => 'vacancy']) }}">
                      <i class="align-middle" data-feather="credit-card"></i>
-                     <span class="align-middle">@lang('helal.section-types.vacancy.plural') </span>
+                     <span class="align-middle">@choice('helal.vacancy' , 2) </span>
                  </a>
              </li>
              
@@ -56,7 +56,7 @@
                  <li class="sidebar-item @if (session()->get('type') == 'campaign') active @endif">
                      <a class="sidebar-link" href="{{ route('dashboard.sections.index', ['type' => 'campaign']) }}">
                          <i class="align-middle" data-feather="navigation"></i>
-                         <span class="align-middle">@lang('helal.section-types.campaign.plural')</span>
+                         <span class="align-middle">@choice('helal.campaign' , 2)</span>
                      </a>
                  </li>
 

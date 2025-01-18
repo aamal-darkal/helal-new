@@ -29,21 +29,20 @@ class SectionController extends Controller
     {
         $type = $request->type;
         $search = $request->search;
-        $sections = Section::select('id','hidden', 'image_id', 'created_at', 'created_by', 'updated_at', 'updated_by')
+        $sections = Section::select('id', 'hidden', 'image_id', 'created_at', 'created_by', 'updated_at', 'updated_by')
             ->when($search, function ($q) use ($search) {
-                return $q->where(function ($q) use ($search) {
-                    return $q->where('title_ar', 'like', "%$search%")
-                        ->orWhere('title_en', 'like', "%$search%");
+                return  $q->wherehas('sectionDetails', function ($q) use ($search) {
+                    return $q->where('title', 'like', "%$search%");
                 });
             })->when(Auth::user()->type == 'user', function ($q) {
-                return $q->whereHas('provinces', function($q){
-                    return $q->where('id' , Auth::user()->province_id);
-                });            
+                return $q->whereHas('provinces', function ($q) {
+                    return $q->where('id', Auth::user()->province_id);
+                });
             })->where('type', $type)
-            ->with(['sectionDetail_ar:section_id,title', 'sectionDetail_en:section_id,title','createdBy:id,name', 'updatedBy:id,name'])
+            ->with(['sectionDetail_ar:section_id,title', 'sectionDetail_en:section_id,title', 'createdBy:id,name', 'updatedBy:id,name'])
             ->latest()
             ->paginate();
-            // return $sections;
+        // return $sections;
         return view('dashboard.sections.index',   compact('sections', 'type', 'search'));
     }
 
@@ -99,7 +98,7 @@ class SectionController extends Controller
         /** saving relation to doings if exists*/
         if ($request->doings)
             $section->doings()->attach($request['doings']);
-        
+
         if ($request->provinces)
             $section->provinces()->attach($request['provinces']);
 
@@ -110,7 +109,7 @@ class SectionController extends Controller
             $menu->update(['url' => "show/$section->id", 'section_id' => $section->id]);
             return to_route('dashboard.menus.show', [$menu->menu_id])->with('success', "تم إضافة بند للقائمة  " . $menu->parentMenu->title_ar . " بنجاح");
         }
-        return to_route('dashboard.sections.index', ['type' => $request->type])->with('success', "تم إضافة بيانات ال" . __("helal.section-types.$request->type.singular")  .  " بنجاح");
+        return to_route('dashboard.sections.index', ['type' => $request->type])->with('success', "تم إضافة بيانات ال" . trans_choice("helal.$request->type", 1)  .  " بنجاح");
     }
 
     /**
@@ -138,8 +137,8 @@ class SectionController extends Controller
             })->get();
 
         $doings = Doing::select('id', DB::raw("concat(title_ar , ' - ' , title_en) as name"))->get();
-        $currDoings =$section->doings->modelKeys();
-        $currProvinces = $section->provinces? $section->provinces->modelKeys():[];
+        $currDoings = $section->doings->modelKeys();
+        $currProvinces = $section->provinces ? $section->provinces->modelKeys() : [];
 
         $section->arabic  = (bool) $section->sectionDetail_ar;
         $section->english = (bool) $section->sectionDetail_en;
@@ -166,24 +165,24 @@ class SectionController extends Controller
         $section->update($validated);
 
         /** saving section_details */
-        if ($request->arabic){
-            if($section->sectionDetail_ar)
+        if ($request->arabic) {
+            if ($section->sectionDetail_ar)
                 $section->sectionDetail_ar()->update(['title' => $request->title_ar,  'content' => $request->content_ar]);
             else
-                $section->sectionDetails()->create(['title' => $request->title_ar,  'content' => $request->content_ar , 'lang' => 'ar' ]);
+                $section->sectionDetails()->create(['title' => $request->title_ar,  'content' => $request->content_ar, 'lang' => 'ar']);
         } else {
-            if($section->sectionDetail_ar)
+            if ($section->sectionDetail_ar)
                 $section->sectionDetail_ar()->delete();
         }
-        if ($request->english){
-            if($section->sectionDetail_en)
+        if ($request->english) {
+            if ($section->sectionDetail_en)
                 $section->sectionDetail_en()->update(['title' => $request->title_en,  'content' => $request->content_en]);
             else
-                $section->sectionDetails()->create(['title' => $request->title_en,  'content' => $request->content_en , 'lang' => 'en']);
+                $section->sectionDetails()->create(['title' => $request->title_en,  'content' => $request->content_en, 'lang' => 'en']);
         } else {
-            if($section->sectionDetail_en)
+            if ($section->sectionDetail_en)
                 $section->sectionDetail_en->delete();
-        }        
+        }
 
         /** delete image record from images table with related file */
         if ($oldImage) {
@@ -206,7 +205,7 @@ class SectionController extends Controller
             else
                 return to_route('dashboard.menus.index')->with('success', "تم تعديل بند القائمة  $menu->title_ar بنجاح");
         }
-        return to_route('dashboard.sections.index', ['type' => $type])->with('success', "تم حفظ بيانات ال" .  __("helal.section-types.$type.singular") . " بنجاح");
+        return to_route('dashboard.sections.index', ['type' => $type])->with('success', "تم حفظ بيانات ال" .  trans_choice("helal.$request->type", 1) . " بنجاح");
     }
 
     /**
@@ -215,8 +214,7 @@ class SectionController extends Controller
     public function destroy(Section $section)
     {
         $oldImage = Image::find($section->image_id);
-        $title = $section->sectionDetail_ar?$section->sectionDetail_ar->title:
-        ($section->sectionDetail_en? $section-> sectionDetail_en->title:'');
+        $title = $section->sectionDetail_ar ? $section->sectionDetail_ar->title : ($section->sectionDetail_en ? $section->sectionDetail_en->title : '');
         $type = $section->type;
         $section->sectionDetails()->delete();
         $section->delete();

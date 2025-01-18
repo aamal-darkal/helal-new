@@ -1,10 +1,10 @@
 @extends('dashboard.layouts.app')
-@section('title', __("helal.section-types.$type.plural"))
+@section('title', trans_choice("helal.$type", 2))
 @section('content')
     <div class="d-flex justify-content-between">
-        <h4 class="title"> {{ __("helal.section-types.$type.plural") }} </h4>
+        <h4 class="title"> {{ trans_choice("helal.$type", 2) }} </h4>
         <a href="{{ route('dashboard.sections.create', ['type' => $type]) }}" class="btn btn-secondary mb-2">إضافة
-            {{ __("helal.section-types.$type.singular") }}</a>
+            {{ trans_choice("helal.$type", 1) }}</a>
     </div>
     <form action="{{ route('dashboard.sections.index') }}" class="d-flex mb-2">
         <button class="btn btn-secondary">بحث</button>
@@ -12,7 +12,7 @@
         <input type="hidden" name="type" value="{{ $type }}">
         @if ($search)
             <a href="{{ route('dashboard.sections.index', ['type' => $type]) }}"
-                class="btn btn-outline-secondary text-nowrap">كافة {{ __("helal.section-types.$type.plural") }}</a>
+                class="btn btn-outline-secondary text-nowrap">كافة {{ trans_choice("helal.$type", 2) }}</a>
         @endif
     </form>
     <table class="table table-bordered table-striped text-center">

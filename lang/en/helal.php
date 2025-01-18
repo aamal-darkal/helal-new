@@ -6,6 +6,7 @@ return [
 
     /** css */
     'font' => 'Montserrat',
+    'lang-btn-font' => 'Tajawal',
     'dir' => 'ltr',
     'align' => 'left',
     'sign' => '+1',
@@ -51,16 +52,14 @@ return [
     // 'center' => ' Media Center',
     // 'media' => 'News and Media',
     'sarc-news' => 'SARC News',
-    
-        /** ================================================ */
-    /** for dashboard (in arabic only) section types */
-    'section-types' => [
-        'article' => ['singular' => 'article', 'plural' => 'articles'],
-        'campaign' => ['singular' => 'campaign', 'plural' => 'campaigns'],
-        'news' => ['singular' => 'news', 'plural' => 'news'],
-        'story' => ['singular' => 'story', 'plural' => 'stories'],
-        'section' => ['singular' => 'article', 'plural' => 'articles'],
-        'vacancy' => ['singular' => 'vacancy', 'plural' => 'vacancies'],
-        'page' => ['singular' => 'page', 'plural' => 'pages'],
-    ]
+
+
+    /** ================================================ */
+    'article' => 'article|articles',
+    'campaign' => 'campaign|campaigns',
+    'news' => 'news|news',
+    'story' => 'story|stories',
+    'section' => 'article|articles',
+    'vacancy' => 'vacancy|vacancies',
+    'page' => 'page|pages',  
 ];

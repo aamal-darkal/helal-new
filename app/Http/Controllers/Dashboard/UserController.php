@@ -37,10 +37,12 @@ class UserController extends Controller
         $validated =  $request->validate([
             'name' => 'required|string|max:50',
             'email' => 'required|string|max:50|unique:users',
+            'password' => ['required', 'string'],            
             'type' => 'required|in:admin,user',
-            'status' => 'new',
+            'state' => 'required|in:normal,banned',
             'province_id' => 'required|exists:provinces,id',
         ]);
+        $validated['password'] = Hash::make($validated['password']);
         User::create($validated);
         return to_route('dashboard.users.index')->with('success', "تم إضافة الحساب بنجاح");
     }
@@ -61,22 +63,16 @@ class UserController extends Controller
         $validated =  $request->validate([
             'name' => 'required|string|max:50',
             'email' => "required|string|max:50|unique:users,email,$user->id",
+            'password' => ['sometimes', 'string'],
             'type' => 'required|in:admin,user',
+            'state' => 'required|in:normal,banned',
             'province_id' => 'required|exists:provinces,id',
         ]);
         $user->update($validated);
 
-
         return to_route('dashboard.users.index')->with('success', "تم تعديل الحساب بنجاح");
     }
-    /** reset password */
-    function resetPassword(User $user)
-    {
-            $user->state = 'reset';
-            $user->save();
-        
-        return back()->with('success', "تم تصفير كلمة المرور لحساب $user->name بنجاح");
-    }
+   
     /** lock account */
     function lock(User $user)
     {

@@ -1,8 +1,8 @@
 @extends('dashboard.layouts.app')
-@section('title', 'تعديل ' . __("helal.section-types.$type.singular"))
+@section('title', 'تعديل ' . trans_choice("helal.$type", 1))
 @section('content')
 
-    <h4 class="title"> تعديل {{ __("helal.section-types.$type.singular") }} </h4>
+    <h4 class="title"> تعديل {{ trans_choice("helal.$type", 1) }} </h4>
 
     <form action="{{ route('dashboard.sections.update', $section) }}" method="post" enctype="multipart/form-data"
         onsubmit="readRich()"
@@ -51,7 +51,7 @@
         </div>
 
         <x-input type="date" :dbValue="$section->date" name="date"
-            label='تاريخ ال{{ __("helal.section-types.$type.singular") }}' />
+            label='تاريخ ال{{ trans_choice("helal.$type", 1) }}' />
 
         <x-checkbox name="hidden" label="مخفي" :dbValue="$section->hidden" />
 
@@ -78,7 +78,7 @@
             @enderror
         </div>
 
-        <button class="btn btn-secondary">حفظ ال{{ __("helal.section-types.$type.singular") }}</button>
+        <button class="btn btn-secondary">حفظ ال{{ trans_choice("helal.$type", 1) }}</button>
         <a href="{{ route('dashboard.sections.index', ['type' => $type]) }}" class="btn btn-outline-secondary">عودة</a>
     </form>
 @endsection

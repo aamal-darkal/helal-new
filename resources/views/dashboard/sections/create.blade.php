@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
-@section('title', 'إضافة ' . __("helal.section-types.$type.singular"))
+@section('title', 'إضافة ' . trans_choice("helal.$type", 1))
 @section('content')
-    <h4 class="title"> إضافة {{ __("helal.section-types.$type.singular") }}
+    <h4 class="title"> إضافة {{ trans_choice("helal.$type", 1) }}
 
         @if ($menu)
             لبند القائمة: {{ $menu->title_ar }}
@@ -52,8 +52,8 @@
         </div>
         <br>
 
-        <x-input type="date" name="date" label='تاريخ ال{{ __("helal.section-types.$type.singular") }}'
-            dbValue="{{ today()->toDateString() }}" />
+        <x-input type="date" name="date" label='تاريخ ال{{ trans_choice("helal.$type", 1) }}'
+            dbValue="{{ date('Y-m-d') }}" />
 
         <x-checkbox name="hidden" label="مخفي" />
 
@@ -82,7 +82,7 @@
             @enderror
         </div>
 
-        <button class="btn btn-secondary">إضافة @lang("helal.section-types.$type.singular") </button>
+        <button class="btn btn-secondary">إضافة @choice("helal.$type" ,1) </button>
         <a href="{{ route('dashboard.sections.index', ['type' => $type]) }}" class="btn btn-outline-secondary">عودة</a>
 
     </form>

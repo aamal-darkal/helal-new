@@ -530,12 +530,14 @@ p {
 }
 
 .single-news:hover {
-	border-bottom: solid var(--color-salmon-5) 1px;
+	border-bottom: solid var(--color-salmon-5) ;
 }
-
+.single-news .img-wrapper{
+	/* width: 100%; */
+	overflow: hidden;
+}
 .single-news img {
 	height: 150px;
-	width: 100%;
 	transition: all 0.3s ease-out 0s;
 }
 
@@ -552,8 +554,9 @@ p {
 	background-color: var(--color-salmon-5);
 	color: white;
 	padding: 5px;
-	height: 2.9em;
-	width: 70%;
+	height: 2em;
+	display: inline-block;
+	/* width: 70%; */
 }
 
 /* ===================================== */
@@ -563,11 +566,11 @@ p {
 	position: relative;
 	left: calc(25px * var(--sign));
 	bottom: 15px;
+	overflow: hidden;
 }
 
 .story-img img {
 	height: 310px;
-	width: 100%;
 }
 
 .story-content {

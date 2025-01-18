@@ -30,9 +30,8 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'string'],
-            'password_confirmation' => ['sometimes', Rules\Password::defaults(),'same:password'],
+            'email' => ['required', 'string', 'email', 'exists:users,email'],
+            'password' => ['required', 'string'],            
         ];
     }
     public function messages(){
