@@ -15,8 +15,8 @@ window.addEventListener("scroll", toggleBacktotop);
   ======================================= */
 const navbar = document.querySelector(".navbar");
 const makeNavSticky = () => {
-    if (window.scrollY > 10) navbar.classList.add("sticky");
-    else if (window.scrollY < 10) navbar.classList.remove("sticky");
+    if (window.scrollY > 60) navbar.classList.add("sticky");
+    else navbar.classList.remove("sticky");
 };
 window.addEventListener("scroll", makeNavSticky);
 
@@ -66,11 +66,12 @@ var swiper = new Swiper(".news-swipper", {
         clickable: true,
     },
     breakpoints: {
-        640: {
+       
+        500: {
             slidesPerView: 2,
             spaceBetween: 5,
         },
-        768: {
+        800: {
             slidesPerView: 4,
             spaceBetween: 10,
         },

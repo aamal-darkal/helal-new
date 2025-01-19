@@ -5,7 +5,7 @@
                 <div class="swiper news-swipper">
                     <div class="swiper-wrapper">
                         @foreach ($news as $new)
-                            <div class = "swiper-slide ">
+                            <div class = "swiper-slide">
                                 <div class="single-news">
                                     <a href="{{ route('home.show', $new->id) }}"
                                         style="direction:@if ($new->$detail->lang == 'en') ltr @else rtl @endif">
@@ -13,9 +13,9 @@
                                             <img src="{{ asset(getImgUrl($new->image_id)) }}">
                                         </div>
 
-                                        <h4 class="sub-title"> @choice("helal.$new->type", 2) </h4>
+                                        <h4 class="sub-title"> @choice("helal.$new->type", 1) </h4>
                                         <div class="px-3">
-                                            <p>{{ $new->date }}</p>
+                                            <p class="m-1">{{ $new->date }}</p>
                                             <div class="news-content">
                                                 <div class="d-none">
                                                     {!! $new->$detail->content !!}
