@@ -150,10 +150,10 @@ p {
 	padding-top: 200px;
 }
 
-.content-divider {
+/* .content-divider {
 	margin-top: 10px;
 	transition: 1s;
-}
+} */
 
 .filter-box {
 	display: flex;
@@ -284,11 +284,10 @@ p {
 .navbar {
 	width: fit-content;
 	margin: auto;
-	margin-top: 60px;
 	position: sticky;
-	top: -15px;
+	top: 60px;
 	z-index: 999;
-	transition: 0.3s;
+	transition: top 0.5s;
 	letter-spacing: calc(var(--sign) * -0.5px);
 }
 
@@ -316,7 +315,9 @@ p {
 .dropdown-item {
 	padding: 5px 7px;
 }
-
+.sticky{
+	top: -15px;
+}
 .sticky .nav-link {
 	background-color: transparent;
 }
@@ -502,6 +503,7 @@ p {
 /* ===================================== */
 /* ************** news *********** */
 /* ===================================== */
+
 .single-news {
 	background: #fff;
 	margin-bottom: 30px;
@@ -641,7 +643,7 @@ p {
 	margin-top: 155px;
 }
 .campaign-content {
-	margin-top: 110px;
+	margin-top: 90px;
 }
 .campaign-wrapper h2, .campaign-content{
 	background-color: #df1f2c;
