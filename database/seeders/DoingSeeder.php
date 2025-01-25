@@ -433,10 +433,15 @@ class DoingSeeder extends Seeder
 		/**  */
 		$doingPress = ['id' => 11, 'title_ar' => 'البيانات الصحفية', 'title_en' => 'Press Releases', 'hidden' => true];
 		$menuPress =    [ 'title_en' => 'Press Releases', 'title_ar' => 'البيانات الصحفية', 'url' => 'search?doing=11', 'order' => 2,  'permit' => 'none', 'menu_id' => 6 ];
-		            
-
 		$menu = Menu::create($menuPress);
 		$doing = $menu->doing()->create($doingPress);
+
+		$doingTenders = ['id' => 12, 'title_ar' => 'المناقصات', 'title_en' => 'Press Releases', 'hidden' => true];
+		$menuTenders =    [ 'title_en' => 'Tenders', 'title_ar' => 'المناقصات', 'url' => 'search?doing=12', 'order' => 3,  'permit' => 'none', 'menu_id' => 6 ];
+		            
+
+		$menu = Menu::create($menuTenders);
+		$doing = $menu->doing()->create($doingTenders);
 		
     }
 }

@@ -46,7 +46,7 @@ class HomeController extends Controller
                 return $q->select("section_id","lang", DB::raw("substr(REGEXP_REPLACE(content, '<[^>]*>+', '') , 1 ,400) as content"));
             })
             ->wherehas("sectionDetail_$locale")
-            ->whereIn('type', ['article',  'campaign',   'news',  'story'])->where('hidden', 0)->orderBy('date', 'desc')->limit(6)->get();
+            ->whereIn('type', ['article',   'news'])->where('hidden', 0)->orderBy('date', 'desc')->limit(6)->get();
 
         $stories = Section::select('id', 'date', 'image_id', 'summary_length')
             ->with("sectionDetail_$locale", function ($q) {
@@ -90,6 +90,12 @@ class HomeController extends Controller
     function search(Request $request)
     {
         $type = $request->type;
+        // if ($type && ! is_array($type)){
+        //     $type = [$type];
+        //     return "not array";
+        // }
+        // else
+        //     return "array";
 
         $locale = app()->getLocale();
 
@@ -112,7 +118,7 @@ class HomeController extends Controller
             })
             /** for certain type */
             ->when($type, function ($q) use ($type) {
-                return $q->Where('type', $type);
+                return $q->WhereIn('type', $type);
             })
             /** for free search */
             ->when($search, function ($q) use ($search) {
@@ -141,7 +147,8 @@ class HomeController extends Controller
         $detail = "sectionDetail_$locale";
 
         $key = $province ?  trans_choice('helal.news' , 2)  . " " . Province::find($province)->$name : 
-         ($type ?   trans_choice("helal.$type", 2) : 
+         ($type ?  ''  :
+        // trans_choice("helal.$type", 2)
          ($search ? $search : 
          ($doing ? Doing::find($doing)->$title :  __('helal.organization-news'))));
             

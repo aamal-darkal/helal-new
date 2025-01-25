@@ -150,10 +150,10 @@ p {
 	padding-top: 200px;
 }
 
-/* .content-divider {
-	margin-top: 10px;
+.content-divider {
+	margin-top: 60px;
 	transition: 1s;
-} */
+}
 
 .filter-box {
 	display: flex;
@@ -187,7 +187,6 @@ p {
 	position: fixed;
 	margin-top: 10px;
 	right: calc(50% + var(--sign) * (42% - 70px));
-	top: 5px
 }
 
 /** Modal Box */
@@ -315,11 +314,13 @@ p {
 .dropdown-item {
 	padding: 5px 7px;
 }
-.sticky{
+
+.sticky {
 	top: -15px;
 }
+
 .sticky .nav-link {
-	background-color: transparent;
+	background-color: transparent !important;
 }
 
 .navbar-nav>.nav-item>.nav-link {
@@ -501,22 +502,53 @@ p {
 }
 
 /* ===================================== */
+/* ************** swipper *********** */
+/* ===================================== */
+[class^="btn-"] {
+	font-size: 2em;
+	position: absolute;
+	z-index: 99;
+	color: var(--color-salmon-5);
+	top: 35%;
+}
+
+.swipper-container {
+	position: relative;
+	padding: 0 1.5em;
+}
+
+.btn-next {
+	right: 0;
+}
+
+.btn-prev {
+	left: 0;
+}
+
+.swiper-slide {
+	display: flex;
+	justify-content: center;
+}
+
+
+/* ===================================== */
 /* ************** news *********** */
 /* ===================================== */
+#news-area {
+	background-color: var(--color-grey-1);
+	padding: 1px 0 ;
+}
 
 .single-news {
 	background: #fff;
-	margin-bottom: 30px;
+	margin-bottom: 0 auto 30px;
 	border: 1px solid var(--color-grey-2);
 	box-shadow: 0px 3px 35px rgba(218, 222, 228, 0.3);
-	padding: 0;
 	line-height: 1.3;
 	font-size: calc(12px + 0.2vw);
 	font-weight: 500;
 	height: 400px;
-	width: 85%;
-	margin: 0 ;
-	max-width: 200px;
+	max-width: 250px;
 }
 
 .summary {
@@ -538,10 +570,6 @@ p {
 	object-fit: cover;
 }
 
-.h-70px {
-	height: 70px;
-}
-
 .single-news img:hover {
 	transform: scale(1.02);
 	filter: grayscale(70%)
@@ -555,21 +583,6 @@ p {
 	display: inline-block;
 }
 
-[class^="swiper-button-"]::after {
-	font-size: 20px;
-	font-weight: 900;
-}
-
-[class^="swiper-button-"] {
-	width: 0px;	
-}
-.news-swipper .swiper-slide{
-	margin: 0 !important;
-}
-.news-swipper .swiper-wrapper {
-	padding-left: 40px ;
-	background-color: #fff;
-}
 
 
 /* ===================================== */
@@ -581,6 +594,14 @@ p {
 	bottom: 15px;
 	overflow: hidden;
 }
+#stories-area [class^="btn-"] {
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	border-radius: 100%;
+	background-color: var(--color-salmon-4);
+	color: var(--color-grey-0);
+}
 
 .story-img img {
 	height: 310px;
@@ -593,6 +614,7 @@ p {
 	font-weight: 500;
 	font-size: 16px;
 }
+
 .story-img {
 	position: relative;
 	left: calc(25px * var(--sign));
@@ -612,10 +634,6 @@ p {
 	font-size: 16px;
 }
 
-.stories-swiper .swiper-slide {
-	width: 95% !important;
-	padding-left: 40px;
-}
 
 @media(max-width:767px) {
 
@@ -637,25 +655,31 @@ p {
 }
 
 .title-wrapper {
-	padding: 0 14%;
+	max-width: 1000px;
+	margin: auto;
 }
-.campaign-wrapper h2{
+
+.campaign-wrapper h2 {
 	margin-top: 155px;
 }
+
 .campaign-content {
 	margin-top: 90px;
 }
-.campaign-wrapper h2, .campaign-content{
+
+.campaign-wrapper h2,
+.campaign-content {
 	background-color: #df1f2c;
 	color: #fff !important;
 	display: inline-block;
-	padding:0 5px;
+	padding: 0 5px;
 }
 
 /* ===================================== */
 /* ************** martyrs *********** */
 /* ===================================== */
 .single-martyr {
+	text-wrap: nowrap ;
 	border-radius: 50%;
 	border: solid var(--color-salmon-5) 1px;
 	background-color: white;
@@ -667,16 +691,16 @@ p {
 	text-align: center;
 	box-shadow: 0px 0 20px rgba(0, 0, 0, 0.1);
 	transition: 0.3s;
-	padding: 30px;
 	margin: 40px 30px;
 	min-height: 250px;
 	width: 250px;
-
+	white-space: nowrap;
+	padding-top: 30px;
 }
 
 
 #martyers .swiper-slide {
-	opacity: 0.3;
+	filter: blur(2px);
 	display: flex;
 	justify-content: center;
 }
@@ -684,10 +708,13 @@ p {
 .single-martyr p {
 	text-align: inherit;
 }
-
+.single-martyr h4 {
+	font-family: "Aref Ruqaa", serif;	
+}
 @media (min-width: 992px) {
 	#martyers .swiper-slide-next {
-		opacity: 1;
+		/* opacity: 1; */
+		filter: none;
 		transform: scale(1.12);
 	}
 }
@@ -695,6 +722,7 @@ p {
 @media (max-width: 991px) {
 	#martyers .swiper-slide {
 		opacity: 1;
+		filter: none;
 		transform: scale(1.12);
 	}
 }

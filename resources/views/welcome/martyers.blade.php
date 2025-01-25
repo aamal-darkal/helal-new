@@ -8,15 +8,14 @@
                 @foreach ($martyers as $martyer)
                     <div class="swiper-slide">
                         <div class="single-martyr">
-                            <h4>{{ $martyer->name }}</h4>
-                            <h5>{{ $martyer->DOD }}</h5>
-                            <p>{{ $martyer->province->name }}</p>
+                            <h4 class="martyer-font">{{ $martyer->name }}</h4>
+                            <p>{{ $martyer->province->name }} - {{ $martyer->DOD }}</p>
                         </div>
                     </div>
                 @endforeach
             </div>
             <div class="swiper-pagination"></div>
-        </div>
-        </div>
+        </div>      
     </section>
 @endif
+

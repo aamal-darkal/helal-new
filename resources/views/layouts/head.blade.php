@@ -9,8 +9,9 @@
     {{--  Arabic font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&family=Aref+Ruqaa:wght@400;700&display=swap"
         rel="stylesheet">
+
     {{--  English font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,6 +45,9 @@
         }
         .lang-btn {
             font-family: @lang('helal.lang-btn-font')
+        }
+        .martyer-font {
+            font-size: @lang('helal.martyer-font-size')
         }
     </style>
     <!--====== aos custom ======-->

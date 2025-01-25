@@ -7,6 +7,7 @@ return [
     /** css */
     'font' => 'Montserrat',
     'lang-btn-font' => 'Tajawal',
+    'martyer-font-size' => '1.2em', 
     'dir' => 'ltr',
     'align' => 'left',
     'sign' => '+1',

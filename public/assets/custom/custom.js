@@ -47,11 +47,7 @@ var swiper = new Swiper(".martyer-swiper", {
         type: "bullets",
         clickable: true,
     },
-    breakpoints: {
-        // 768: {
-        //     slidesPerView: 2,
-        //     spaceBetween: 5,
-        // },
+    breakpoints: {        
         992: {
             slidesPerView: 3,
             spaceBetween: 5,
@@ -59,36 +55,7 @@ var swiper = new Swiper(".martyer-swiper", {
     },
 });
 
-var swiper = new Swiper(".news-swipper", {
-    slidesPerView: 1,
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
-    breakpoints: {
-       
-        500: {
-            slidesPerView: 2,
-            spaceBetween: 5,
-        },
-        800: {
-            slidesPerView: 4,
-            spaceBetween: 10,
-        },
-    },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-});
 
-var swiper = new Swiper(".stories-swiper", {
-    slidesPerView: 1,
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-});
 
 /** =====================================
    Search modal

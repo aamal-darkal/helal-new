@@ -58,7 +58,7 @@ class MenuSeeder extends Seeder
             ['id' => env('MENU_DOING'), 'title_en' => 'What We Do?', 'title_ar' => 'ماذا نفعل؟', 'url' => '', 'order' => 3, 'permit' => 'none' , 'section_id' => null],
             ['id' => 4, 'title_en' => 'Our News', 'title_ar' => 'أخبارنا', 'url' => '', 'order' => 4, 'permit' => 'none' , 'section_id' => null],
             ['id' => 5, 'title_en' => 'Our Achievements', 'title_ar' => 'إنجازاتنا', 'url' => '', 'order' => 5, 'permit' => 'none' , 'section_id' => null],
-            ['id' => 6, 'title_en' => 'Sections', 'title_ar' => 'فقرات', 'url' => '', 'order' => 6, 'permit' => 'none' , 'section_id' => null],
+            ['id' => 6, 'title_en' => 'Reporting', 'title_ar' => 'إعلام', 'url' => '', 'order' => 6, 'permit' => 'none' , 'section_id' => null],
             ['id' => 7, 'title_en' => 'Join Us', 'title_ar' => 'انضم إلينا', 'url' => '', 'order' => 7, 'permit' => 'none' , 'section_id' => null],
         ];
         Menu::insert($mainMenus);
@@ -77,6 +77,7 @@ class MenuSeeder extends Seeder
             /** sarc news */
             ['id' => env('MENU_PROVINCE'), 'title_en' => 'Branch News', 'title_ar' => 'أخبار الفروع', 'url' => '', 'order' => 2,  'permit' => 'none', 'menu_id' => 4, 'section_id' => null],
             ['id' => 24, 'title_en' => 'Humanitarian Stories', 'title_ar' => 'قصص إنسانية', 'url' => 'search?type=story', 'order' => 3,  'permit' => 'none', 'menu_id' => 4, 'section_id' => null],
+            ['id' => 25, 'title_en' => 'campaigns', 'title_ar' => 'الحملات', 'url' => 'search?type=campaign', 'order' => 4,  'permit' => 'none', 'menu_id' => 4, 'section_id' => null],
         ];
         Menu::insert($newsMenu);
 
