@@ -58,7 +58,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $locale =   app()->getLocale();
 
-        return Doing::select('id', "title_$locale as title", "icon")->where('hidden', false)->get();
+        return Doing::select('id', "title_$locale as title", "icon")->where('hidden', false)->orderby('id')->get();
     }
 
     private function getComponents()

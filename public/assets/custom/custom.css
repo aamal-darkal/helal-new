@@ -209,6 +209,9 @@ p {
 	visibility: hidden;
 }
 
+.form-select{
+	width: 220px !important;
+}
 /** search-box **/
 .hidden .modal-content {
 	width: 40%;

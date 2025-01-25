@@ -12,6 +12,10 @@
         <x-input name="title_ar" label="العنوان بالعربي" required maxlength="100"  />
         <x-input name="title_en" label="العنوان بالانكليزي " required maxlength="100"/>
 
+         <div>
+            <label class="form-label">نوع البند</label> <br>
+            <x-radio name="type" :items="['page' , 'category']" dbValue="page"/>
+        </div>
 
         <button class="btn btn-secondary">  إنشاء وعرض بيانات الصفحة </button>
         <a href="{{ route('dashboard.menus.index') }}" class="btn btn-outline-secondary">عودة</a>

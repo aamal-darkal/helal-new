@@ -6,7 +6,9 @@
             <option value="{{ $option->id }}" @selected(in_array($option->id, old($element_id, $dbValues)))>{{ $option->name }}</option>
         @endforeach
     </select>
-    @error($name)
+    <div class="mt-1">
+        @error($element_id)
         <div class="text-danger">{{ $message }}</div>
     @enderror
+    </div>
 </div>

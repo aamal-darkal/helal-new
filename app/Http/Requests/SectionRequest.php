@@ -11,7 +11,12 @@ class SectionRequest extends FormRequest
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
-    {
+    {   
+        $user = auth()->user();
+        if (
+            $user->type == 'user' &&
+            $user->province_id != $this->provinces[0] )
+            return false;
         return true;
     }
 
@@ -22,8 +27,8 @@ class SectionRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [ 
-            'type' => ["required" , Rule::in(config('app.section-type'))  ] ,
+        return [
+            'type' => ["required", Rule::in(config('app.section-type'))],
             // 'type' => ["required"   ] ,
             'arabic' => 'nullable',
             'english' => 'nullable',
@@ -32,16 +37,16 @@ class SectionRequest extends FormRequest
             'content_ar' => 'required_if:arabic,1',
             'content_en' => 'required_if:english,1',
             'summary-length' => 'nullable|int',
-            'date' =>'nullable|date',
+            'date' => 'nullable|date',
             'hidden' => "nullable|in:1,0",
-            'image_id' => 'nullable|file|max:5000',
+            'image_id' => 'nullable|file|max:1000',
 
             'doings' => 'nullable|array',
             'doings.*' => 'required|exists:doings,id',
-            
+
             'provinces' => 'required|array',
             'provinces.*' => 'required|exists:provinces,id',
-            
+
         ];
     }
     function messages()

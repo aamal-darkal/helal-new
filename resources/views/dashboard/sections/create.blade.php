@@ -6,8 +6,8 @@
         @if ($menu)
             لبند القائمة: {{ $menu->title_ar }}
         @endif
-    </h4>
-        
+    </h4>    
+
     <form action="{{ route('dashboard.sections.store') }}" method="post" enctype="multipart/form-data" onsubmit="readRich()"
         name="sectionForm">
         @csrf

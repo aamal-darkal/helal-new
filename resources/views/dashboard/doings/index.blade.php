@@ -18,6 +18,7 @@
                 <th> المعدل </th>
                 <th> تاريخ التعديل </th>
                 <th> الصورة </th>
+                <td>النوع </td>
                 <th> أوامر </th>
             </tr>
         </thead>
@@ -31,6 +32,7 @@
                     <td> {{ $doing->created_at ? $doing->created_at->format('Y-m-d'): '' }}</td>
                     <td> {{ $doing->updatedBy  ? $doing->updatedBy->name : '' }} </td>
                     <td> {{ $doing->updated_at ? $doing->updated_at->format('Y-m-d'):'' }}</td>
+                    <td>@if($doing->hidden) تصنيف @else ماذا نفعل @endif</td>
                     <td> {!! $doing->icon !!}</td>
 
                     <td class="text-nowrap">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Doing;
 use App\Models\Menu;
 use App\Models\Section;
 use Illuminate\Http\Request;
@@ -57,14 +58,25 @@ class MenuController extends Controller
             'title_ar' => 'required|string|max:100|unique:menus',
             'title_en' => 'nullable|string|max:100|unique:menus',
             'menu_id' => 'exists:menus,id',
+            'type' => 'in:category,page'
         ]);
 
         $validated['order'] = Menu::where('menu_id', $validated['menu_id'])->max('order') + 1;
         $validated['created_by'] = Auth::user()->id;
 
         $menu = Menu::create($validated);
+        if ($validated['type'] == 'category') {
 
-        return to_route('dashboard.sections.create', ['type' => 'page', 'menu' => $menu->id]);
+            Doing::create(
+                [
+                    'title_ar' => $validated['title_ar'],
+                    'title_en' => $validated['title_en'],
+                    'hidden' => true
+                ]
+            );
+            return to_route('dashboard.menus.index', $validated['menu_id'])->with('success', "تم تعديل الحساب بنجاح");
+        } else
+            return to_route('dashboard.sections.create', ['type' => 'page', 'menu' => $menu->id]);
     }
 
     public function edit(Menu $menu)

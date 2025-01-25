@@ -6,7 +6,7 @@
         <div class="filter-box">
             <h2 class="text-salmon"> {{ $key }}</h2>
             <select name="type" class="form-select" onchange="getUrl(this.value);">
-                <option value="" hidden>-- @lang('helal.choose-type')</option>
+                <option value="" hidden>@lang('helal.choose-type')</option>
                 @foreach (config('app.section-type') as $option)
                     <option value="{{ $option }}" @selected($option == $type)>
                         {{ trans_choice("helal.$option", 2) }}</option>

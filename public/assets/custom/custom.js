@@ -76,6 +76,8 @@ var swiper2 = new Swiper(".martyer-swiper", {
         el: ".swiper-pagination",
         type: "bullets",
         clickable: true,
+        dynamicBullets: true,
+        dynamicMainBullets: 3,
     },
     breakpoints: {
         992: {

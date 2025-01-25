@@ -90,12 +90,16 @@ class HomeController extends Controller
     function search(Request $request)
     {
         $type = $request->type;
-        // if ($type && ! is_array($type)){
-        //     $type = [$type];
-        //     return "not array";
-        // }
-        // else
-        //     return "array";
+        if ($type && ! is_array($type)){
+            $typeString =     trans_choice("helal.$type", 2);
+            $type = [$type];
+        }
+        else{
+            array_map(function($t){
+                return trans_choice("helal.$t", 2);
+            } , $type);
+            $typeString = implode('-' , $type);
+        }
 
         $locale = app()->getLocale();
 
@@ -147,8 +151,7 @@ class HomeController extends Controller
         $detail = "sectionDetail_$locale";
 
         $key = $province ?  trans_choice('helal.news' , 2)  . " " . Province::find($province)->$name : 
-         ($type ?  ''  :
-        // trans_choice("helal.$type", 2)
+         ($type ?  $typeString  :
          ($search ? $search : 
          ($doing ? Doing::find($doing)->$title :  __('helal.organization-news'))));
             

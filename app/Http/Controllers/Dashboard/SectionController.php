@@ -58,8 +58,9 @@ class SectionController extends Controller
         $provinces = Province::select('id', 'name_ar as name')
             ->when(Auth::user()->type == 'user', function ($q) {
                 return $q->where('id', Auth::user()->province_id);
-            })->get();
-        $doings = Doing::select('id', DB::raw("concat(title_ar , ' - ' , title_en) as name"))->get();
+            })->orderby('id')->get();
+        $doings = Doing::select('id', DB::raw("concat(title_ar , ' - ' , title_en) as name"))
+        ->orderby('id')->get();
 
         return view(
             'dashboard.sections.create',
@@ -72,7 +73,7 @@ class SectionController extends Controller
      */
     public function store(SectionRequest $request)
     {
-        /** save image if exists */
+        /** save image if exists */        
         $image_id = null;
         if ($request->hasFile('image_id')) {
             $image_id = saveImg($request->type, $request->file('image_id'));
@@ -134,9 +135,10 @@ class SectionController extends Controller
         $provinces = Province::select('id', 'name_ar as name')
             ->when(Auth::user()->type == 'user', function ($q) {
                 return $q->where('id', Auth::user()->province_id);
-            })->get();
+            })->orderby('id')->get();
 
-        $doings = Doing::select('id', DB::raw("concat(title_ar , ' - ' , title_en) as name"))->get();
+        $doings = Doing::select('id', DB::raw("concat(title_ar , ' - ' , title_en) as name"))
+            ->orderby('id')->get();
         $currDoings = $section->doings->modelKeys();
         $currProvinces = $section->provinces ? $section->provinces->modelKeys() : [];
 
