@@ -507,7 +507,7 @@ p {
 [class^="btn-"] {
 	font-size: 2em;
 	position: absolute;
-	z-index: 99;
+	z-index: 9;
 	color: var(--color-salmon-5);
 	top: 35%;
 }
@@ -525,18 +525,13 @@ p {
 	left: 0;
 }
 
-.swiper-slide {
-	display: flex;
-	justify-content: center;
-}
-
 
 /* ===================================== */
 /* ************** news *********** */
 /* ===================================== */
 #news-area {
 	background-color: var(--color-grey-1);
-	padding: 1px 0 ;
+	padding: 1px 0;
 }
 
 .single-news {
@@ -583,6 +578,10 @@ p {
 	display: inline-block;
 }
 
+#news-area .swiper-slide {
+	display: flex;
+	justify-content: center;
+}
 
 
 /* ===================================== */
@@ -594,14 +593,6 @@ p {
 	bottom: 15px;
 	overflow: hidden;
 }
-#stories-area [class^="btn-"] {
-	width: 50px;
-	height: 50px;
-	text-align: center;
-	border-radius: 100%;
-	background-color: var(--color-salmon-4);
-	color: var(--color-grey-0);
-}
 
 .story-img img {
 	height: 310px;
@@ -609,15 +600,16 @@ p {
 
 .story-content {
 	position: relative;
-	right: calc(25px * var(--sign));
+	right: calc(15px * var(--sign));
 	top: 15px;
 	font-weight: 500;
 	font-size: 16px;
+	box-shadow: 1px 2px 5px var(--color-grey-1);
 }
 
 .story-img {
 	position: relative;
-	left: calc(25px * var(--sign));
+	left: calc(15px * var(--sign));
 	bottom: 15px;
 	overflow: hidden;
 }
@@ -626,23 +618,33 @@ p {
 	height: 310px;
 }
 
-.story-content {
-	position: relative;
-	right: calc(25px * var(--sign));
-	top: 15px;
-	font-weight: 500;
-	font-size: 16px;
-}
-
-
 @media(max-width:767px) {
-
 	.story-content,
 	.story-img {
 		position: static;
 	}
+
+	.story-content {
+		border: solid 1px var(--color-grey-1);
+		box-shadow: none;
+	}
 }
 
+#stories-area [class^="btn-"] {
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	border-radius: 100%;
+	background-color: var(--color-salmon-4);
+	color: var(--color-grey-0);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* #stories-area .btn-next {
+	right: -20px * var(--sign);
+} */
 /* ===================================== */
 /* ******* campaign-area *********** */
 /* ===================================== */
@@ -679,7 +681,7 @@ p {
 /* ************** martyrs *********** */
 /* ===================================== */
 .single-martyr {
-	text-wrap: nowrap ;
+	text-wrap: nowrap;
 	border-radius: 50%;
 	border: solid var(--color-salmon-5) 1px;
 	background-color: white;
@@ -708,9 +710,11 @@ p {
 .single-martyr p {
 	text-align: inherit;
 }
+
 .single-martyr h4 {
-	font-family: "Aref Ruqaa", serif;	
+	font-family: "Aref Ruqaa", serif;
 }
+
 @media (min-width: 992px) {
 	#martyers .swiper-slide-next {
 		/* opacity: 1; */

@@ -2,7 +2,7 @@
     <section id="stories-area" class="section-wrapper">
         <div class="container stories-carousel-wrapper">
             <h2 class="section-title">@lang('helal.human-stories')</h2>
-            <div class="swipper-container">
+            <div class="swipper-container p-4">
 
                 <div class="btn-prev"><i class="fa fa-chevron-left"></i></div>
                 <div class="btn-next"><i class="fa fa-chevron-right"></i></div>
@@ -11,14 +11,14 @@
                     <div class="swiper-wrapper">
                         @foreach ($stories as $story)
                             <div class="swiper-slide container" data-aos="fade-up">
-                                <a href="{{ route('home.show', $story->id) }}" class=" d-block row"
+                                <a href="{{ route('home.show', $story->id) }}" class=" d-block p-0"
                                     style="direction:@if ($story->$detail->lang == 'en') ltr @else rtl @endif">
                                     <div class="row">
-                                        <div class="col-md-6 story-img">
+                                        <div class="col-md-6 story-img p-0">
                                             <img src="{{ getImgUrl($story->image_id) }}" alt="">
                                         </div>
-                                        <div class="col-md-6 mb-5">
-                                            <div class="story-content bg-white p-3 shadow">
+                                        <div class="col-md-6 mb-5 p-0">
+                                            <div class="story-content bg-white p-3">
                                                 <h3 class="text-salmon">{{ $story->$detail->title }}</h3>
                                                 <p>{{ $story->date }}</p>
                                                 <div class="d-none">
@@ -42,12 +42,12 @@
 
 @push('js')
     <script>
-        var swiper = new Swiper(".stories-swiper", {
-            slidesPerView: 1,
-            navigation: {
-                nextEl: ".#stories-area .btn-next",
-                prevEl: ".#stories-area .btn-prev",
-            },
-        });
+        // var swiper = new Swiper(".stories-swiper", {
+        //     slidesPerView: 1,
+        //     navigation: {
+        //         nextEl: "#stories-area .btn-next",
+        //         prevEl: "#stories-area .btn-prev",
+        //     },
+        // });
     </script>
 @endpush

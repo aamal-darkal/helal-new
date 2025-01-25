@@ -46,27 +46,6 @@
     @endif
     @push('js')
         <script>
-            var swiper = new Swiper(".news-swipper", {
-                slidesPerView: 1,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                breakpoints: {
-
-                    500: {
-                        slidesPerView: 2,
-                        spaceBetween: 10,
-                    },
-                    800: {
-                        slidesPerView: 4,
-                        spaceBetween: 10,
-                    },
-                },
-                navigation: {
-                    nextEl: "#news-area .btn-next",
-                    prevEl: "#news-area .btn-prev",
-                },
-            });
+        
         </script>
     @endpush

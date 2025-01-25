@@ -35,7 +35,37 @@ window.addEventListener("load", () =>
 /** =====================================
     Defining swipers (slider) depending on Swiper pkg
   ======================================= */
-var swiper = new Swiper(".martyer-swiper", {
+    var swiper = new Swiper(".news-swipper", {
+        slidesPerView: 1,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        breakpoints: {
+            500: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+            },
+            800: {
+                slidesPerView: 4,
+                spaceBetween: 10,
+            },
+        },
+        navigation: {
+            nextEl: "#news-area .btn-next",
+            prevEl: "#news-area .btn-prev",
+        },
+    });
+    
+  var swiper1 = new Swiper(".stories-swiper", {
+    slidesPerView: 1,
+    navigation: {
+        nextEl: "#stories-area .btn-next",
+        prevEl: "#stories-area .btn-prev",
+    }
+});
+
+var swiper2 = new Swiper(".martyer-swiper", {
     loop: true,
     speed: 600,
     autoplay: {
@@ -47,15 +77,13 @@ var swiper = new Swiper(".martyer-swiper", {
         type: "bullets",
         clickable: true,
     },
-    breakpoints: {        
+    breakpoints: {
         992: {
             slidesPerView: 3,
             spaceBetween: 5,
         },
     },
 });
-
-
 
 /** =====================================
    Search modal

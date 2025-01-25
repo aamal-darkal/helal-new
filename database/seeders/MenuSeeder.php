@@ -84,7 +84,6 @@ class MenuSeeder extends Seeder
         $achievementsMenu = [
             ['title_en' => 'Annual Reports', 'title_ar' => 'التقارير السنوية', 'url' => 'show/6', 'order' => 1,  'permit' => 'update', 'menu_id' => 5 , 'section_id' => 6],
             ['title_en' => 'Infographics', 'title_ar' => 'إنفوغراف', 'url' => 'show/7', 'order' => 2, 'permit' => 'update', 'menu_id' => 5 , 'section_id' => 7],
-            ['title_en' => 'Infographics', 'title_ar' => 'الحملات', 'url' => 'search?type=campaign', 'order' => 3, 'permit' => 'none', 'menu_id' => 5 , 'section_id' => null],
         ];
         Menu::insert($achievementsMenu);
         
