@@ -15,9 +15,9 @@ class DoingController extends Controller
     public function index(Request $request)
     {
         $doings = Doing::with([ 'createdBy:id,name', 'updatedBy:id,name'])
-            ->orderby('id')
-            ->orderby('title_ar')
-            ->get();
+        ->orderby('hidden')
+        ->orderby('id')
+        ->get();
         return view('dashboard.doings.index', compact('doings'));
     }
 

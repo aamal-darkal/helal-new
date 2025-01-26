@@ -8,7 +8,7 @@
     </div>
 
     <table class="table table-bordered table-striped">
-        <thead class="table-secondary">
+        <thead class="table-secondary text-center">
             <tr>
                 <th> # </th>
                 <th> العنوان بالعربي </th>
@@ -17,8 +17,8 @@
                 <th> تاريخ الإدخال </th>
                 <th> المعدل </th>
                 <th> تاريخ التعديل </th>
+                <th>النوع </th>
                 <th> الصورة </th>
-                <td>النوع </td>
                 <th> أوامر </th>
             </tr>
         </thead>

@@ -4,8 +4,8 @@
             <h2 class="section-title">@lang('helal.human-stories')</h2>
             <div class="swipper-container p-4">
 
-                <div class="btn-prev"><i class="fa fa-chevron-left"></i></div>
-                <div class="btn-next"><i class="fa fa-chevron-right"></i></div>
+                <div class="btn-swipper-prev"><i class="fa fa-chevron-left"></i></div>
+                <div class="btn-swipper-next"><i class="fa fa-chevron-right"></i></div>
 
                 <div class="swiper stories-swiper">
                     <div class="swiper-wrapper">
@@ -42,12 +42,12 @@
 
 @push('js')
     <script>
-        // var swiper = new Swiper(".stories-swiper", {
-        //     slidesPerView: 1,
-        //     navigation: {
-        //         nextEl: "#stories-area .btn-next",
-        //         prevEl: "#stories-area .btn-prev",
-        //     },
-        // });
+        var swiper1 = new Swiper(".stories-swiper", {
+            slidesPerView: 1,
+            navigation: {
+                nextEl: "#stories-area .btn-swipper-next",
+                prevEl: "#stories-area .btn-swipper-prev",
+            },
+        });
     </script>
 @endpush

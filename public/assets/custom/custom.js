@@ -15,7 +15,7 @@ window.addEventListener("scroll", toggleBacktotop);
   ======================================= */
 const navbar = document.querySelector(".navbar");
 const makeNavSticky = () => {
-    if (window.scrollY > 60) navbar.classList.add("sticky");
+    if (window.scrollY > 20) navbar.classList.add("sticky");
     else navbar.classList.remove("sticky");
 };
 window.addEventListener("scroll", makeNavSticky);
@@ -35,35 +35,7 @@ window.addEventListener("load", () =>
 /** =====================================
     Defining swipers (slider) depending on Swiper pkg
   ======================================= */
-    var swiper = new Swiper(".news-swipper", {
-        slidesPerView: 1,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        breakpoints: {
-            500: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-            },
-            800: {
-                slidesPerView: 4,
-                spaceBetween: 10,
-            },
-        },
-        navigation: {
-            nextEl: "#news-area .btn-next",
-            prevEl: "#news-area .btn-prev",
-        },
-    });
-    
-  var swiper1 = new Swiper(".stories-swiper", {
-    slidesPerView: 1,
-    navigation: {
-        nextEl: "#stories-area .btn-next",
-        prevEl: "#stories-area .btn-prev",
-    }
-});
+
 
 var swiper2 = new Swiper(".martyer-swiper", {
     loop: true,

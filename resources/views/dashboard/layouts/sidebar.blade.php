@@ -80,7 +80,7 @@
                      <li class="sidebar-item @if (str_contains(Route::currentRouteName(), 'doings')) active @endif">
                          <a class="sidebar-link" href="{{ route('dashboard.doings.index') }}">
                              <i class="align-middle" data-feather="briefcase"></i>
-                             <span class="align-middle">صناديق ماذا نفعل</span>
+                             <span class="align-middle">التصنيفات / ماذا نفعل</span>
                          </a>
                      </li>
                  @endif

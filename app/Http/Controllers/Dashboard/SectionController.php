@@ -52,8 +52,7 @@ class SectionController extends Controller
     public function create(Request $request)
     {
         $type = $request->type;
-        $menu = $request->menu;
-        if ($menu) $menu = Menu::find($menu);
+        $menu_id = $request->menu_id;
 
         $provinces = Province::select('id', 'name_ar as name')
             ->when(Auth::user()->type == 'user', function ($q) {
@@ -64,7 +63,7 @@ class SectionController extends Controller
 
         return view(
             'dashboard.sections.create',
-            compact('type', 'provinces', 'doings', 'menu')
+            compact('type', 'provinces', 'doings', 'menu_id')
         );
     }
 

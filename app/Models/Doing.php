@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Doing extends Model
 {
     use HasFactory;
-    public $fillable = ['title_ar', 'title_en', 'icon' , 'updated_by' ];
+    public $fillable = ['title_ar', 'title_en', 'icon' , 'updated_by'  ,'hidden'];
 
     function Keywords()
     {

@@ -67,16 +67,18 @@ class MenuController extends Controller
         $menu = Menu::create($validated);
         if ($validated['type'] == 'category') {
 
-            Doing::create(
+            $doing = Doing::create(
                 [
                     'title_ar' => $validated['title_ar'],
                     'title_en' => $validated['title_en'],
                     'hidden' => true
                 ]
             );
-            return to_route('dashboard.menus.index', $validated['menu_id'])->with('success', "تم تعديل الحساب بنجاح");
+            $menu->url = "search?doing=$doing->id";
+            $menu->save();
+            return to_route('dashboard.menus.show', $validated['menu_id'])->with('success', "تم إضافة البند بنجاح");
         } else
-            return to_route('dashboard.sections.create', ['type' => 'page', 'menu' => $menu->id]);
+            return to_route('dashboard.sections.create', ['type' => 'page', 'menu_id' => $menu->id]);
     }
 
     public function edit(Menu $menu)
@@ -92,13 +94,22 @@ class MenuController extends Controller
         $validated =  $request->validate([
             'title_ar' => "required|string|max:100|unique:menus,title_ar,$menu->id",
             'title_en' => "nullable|string|max:100|unique:menus,title_en,$menu->id",
-            'menu_id' => 'exists:menus,id',
         ]);
 
         $menu->update($validated);
         $validated['updated_by'] = Auth::user()->id;
-
-        return to_route('dashboard.sections.edit', ['section' => $menu->section_id, 'type' => 'page', 'menu' => $menu->id]);
+        if (! $menu->section_id){
+            // Doing::update(
+            //     [
+            //         'title_ar' => $validated['title_ar'],
+            //         'title_en' => $validated['title_en'],
+            //     ]
+            // );
+            return to_route('dashboard.menus.show', $validated['menu_id'])->with('success', "تم إضافة البند بنجاح");
+        }
+        else
+            return to_route('dashboard.sections.edit', ['section' => $menu->section_id, 'type' => 'page', 'menu' => $menu->id]);
+        
     }
 
 

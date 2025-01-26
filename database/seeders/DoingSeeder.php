@@ -436,7 +436,7 @@ class DoingSeeder extends Seeder
 		$menu = Menu::create($menuPress);
 		$doing = $menu->doing()->create($doingPress);
 
-		$doingTenders = ['id' => 12, 'title_ar' => 'المناقصات', 'title_en' => 'Press Releases', 'hidden' => true];
+		$doingTenders = ['id' => 12, 'title_ar' => 'المناقصات', 'title_en' => 'Tenders', 'hidden' => true];
 		$menuTenders =    [ 'title_en' => 'Tenders', 'title_ar' => 'المناقصات', 'url' => 'search?doing=12', 'order' => 3,  'permit' => 'none', 'menu_id' => 6 ];
 		            
 
