@@ -753,7 +753,6 @@ p {
 
 .footer-widget h4 {
 	color: var(--color-salmon-5);
-	text-align: left;
 }
 
 .footer-widget a {
@@ -841,7 +840,7 @@ p {
 	min-height: 70vh;
 	padding: 0 10px;
 }
-h2 {
+.view-wrapper h2 {
 	font-size: 1.5em;
 	width: 70%;
 }
