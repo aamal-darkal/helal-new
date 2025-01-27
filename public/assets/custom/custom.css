@@ -294,7 +294,7 @@ p {
 .nav-link,
 .dropdown-item {
 	background-color: var(--color-white);
-	font-size: calc(10px + .35vw);
+	font-size: calc(9px + .30vw);
 	min-width: calc(80px + var(--sign) * -1 * 40px);
 	text-align: var(--align);
 	font-weight: 600;
@@ -308,9 +308,7 @@ p {
 	top: -15px;
 }
 
-.sticky .nav-link {
-	background-color: transparent !important;
-}
+
 
 .navbar-nav>.nav-item>.nav-link {
 	text-align: center;
@@ -383,6 +381,9 @@ p {
 	.menu-togggle {
 		display: none;
 	}
+		.sticky .nav-link {
+			background-color: transparent !important;
+		}
 }
 
 @media (max-width:1199px) {

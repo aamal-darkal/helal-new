@@ -424,15 +424,15 @@ class DoingSeeder extends Seeder
 		Doing::find(9)->keywords()->attach([13 , 14]);
 
 		/** إرشادات وتوعية */
-		$doingGuidance = [ 'id' => 10 ,'title_ar' => 'إرشادات وتوعية', 'title_en' => 'ِAwaerness an Guidance', 'hidden' => true];
-		$menuGuidance =    [ 'title_en' => 'Awareness and Guidance', 'title_ar' => 'توعية وإرشادات', 'url' => "search?doing=10", 'order' => 1, 'permit' => 'none' , 'menu_id' => '6'];
+		$doingGuidance = [ 'id' => 10 ,'title_ar' => ' توعية وإرشادات', 'title_en' => 'ِAwaerness an Guidance', 'hidden' => true];
+		$menuGuidance =    [ 'title_en' => 'Awareness and Guidance', 'title_ar' => 'توعية وإرشادات', 'url' => "search?doing=10", 'order' => 8, 'permit' => 'none' ];
 		$menu = Menu::create($menuGuidance);
 		$doing = $menu->doing()->create($doingGuidance);
 		
 
 		/**  */
 		$doingPress = ['id' => 11, 'title_ar' => 'البيانات الصحفية', 'title_en' => 'Press Releases', 'hidden' => true];
-		$menuPress =    [ 'title_en' => 'Press Releases', 'title_ar' => 'البيانات الصحفية', 'url' => 'search?doing=11', 'order' => 2,  'permit' => 'none', 'menu_id' => 6 ];
+		$menuPress =    [ 'title_en' => 'Press Releases', 'title_ar' => 'البيانات الصحفية', 'url' => 'search?doing=11', 'order' => 3,  'permit' => 'none', 'menu_id' => 4 ];
 		$menu = Menu::create($menuPress);
 		$doing = $menu->doing()->create($doingPress);
 
